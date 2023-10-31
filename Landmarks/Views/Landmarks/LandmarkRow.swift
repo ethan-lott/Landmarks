@@ -18,15 +18,19 @@ struct LandmarkRow: View {
             Text(landmark.name)
             
             Spacer()
+            
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .foregroundStyle(.yellow)
+            }
         }
     }
 }
 
-struct LandmarkRow_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            LandmarkRow(landmark: landmarks[0])
-            LandmarkRow(landmark: landmarks[1])
-        }
+#Preview {
+    let landmarks = ModelData().landmarks
+    return Group {
+        LandmarkRow(landmark: landmarks[0])
+        LandmarkRow(landmark: landmarks[1])
     }
 }
